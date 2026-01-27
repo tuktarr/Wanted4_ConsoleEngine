@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{314733ed-23e3-42d5-bfae-c70cf04fc95e}</ProjectGuid>
+    <ProjectGuid>{74735664-3a6a-4f8a-a2f4-40c1bf87a0dc}</ProjectGuid>
     <RootNamespace>Engine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -64,7 +64,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy *.h $(SolutionDir)\Includes\Engine\ /e /y</Command>
+      <Command>xcopy *.h ..\Includes\Engine\ /e /y</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>xcopy $(OutDir)\Engine.dll ..\Library\Engine\$(Platform)\$(Configuration)\ /e /y
@@ -87,7 +87,7 @@ xcopy $(OutDir)\Engine.lib ..\Library\Engine\$(Platform)\$(Configuration)\ /e /y
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy *.h $(SolutionDir)\Includes\Engine\ /e /y</Command>
+      <Command>xcopy *.h ..\Includes\Engine\ /e /y</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>xcopy $(OutDir)\Engine.dll ..\Library\Engine\$(Platform)\$(Configuration)\ /e /y
@@ -96,20 +96,17 @@ xcopy $(OutDir)\Engine.lib ..\Library\Engine\$(Platform)\$(Configuration)\ /e /y
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Actor\Actor.h" />
-    <ClInclude Include="Actor\TestActor.h" />
-    <ClInclude Include="Common\Common.h" />
-    <ClInclude Include="Engine\Engine.h" />
-    <ClInclude Include="Level\Level.h" />
-    <ClInclude Include="Level\TestLevel.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Actor\Actor.cpp" />
-    <ClCompile Include="Actor\TestActor.cpp" />
+    <ClCompile Include="Core\Input.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Level\Level.cpp" />
-    <ClCompile Include="Level\TestLevel.cpp" />
-    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actor\Actor.h" />
+    <ClInclude Include="Common\Common.h" />
+    <ClInclude Include="Core\Input.h" />
+    <ClInclude Include="Engine\Engine.h" />
+    <ClInclude Include="Level\Level.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
