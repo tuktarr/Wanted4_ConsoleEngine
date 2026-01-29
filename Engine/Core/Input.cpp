@@ -7,6 +7,9 @@
 namespace Wanted
 {
 	// 전역 변수 초기화.
+	// 데이터 영역
+	// 코드 , 데이터 , 스택 , 힙 영역
+	// 전역 변수의 경우 데이터(섹션,영역)에 들어감 
 	Input* Input::instance = nullptr;
 
 	Input::Input()

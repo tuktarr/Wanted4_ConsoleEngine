@@ -2,6 +2,8 @@
 #include "Engine/Engine.h"
 #include "Level/TestLevel.h"
 
+using namespace Wanted;
+
 int main()
 {
 	Wanted::Engine engine;

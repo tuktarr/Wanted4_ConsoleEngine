@@ -19,6 +19,9 @@ namespace Wanted
 			bool wasKeyDown = false;
 		};
 
+
+	// 생성자를 다른 곳에서 생성할 수 없다.
+	// friend 키워드로 엔진에만 열어뒀다. (엔진에서 생성자 호출 가능)
 	private:
 		Input();
 		~Input();
