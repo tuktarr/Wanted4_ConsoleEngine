@@ -20,6 +20,19 @@ namespace Wanted
 
 		// 설정 파일 로드
 		LoadSetting();
+
+		// 커서 끄기
+		CONSOLE_CURSOR_INFO info = {};
+		GetConsoleCursorInfo(
+			GetStdHandle(STD_OUTPUT_HANDLE),
+			&info
+		);
+
+		info.bVisible = false;
+		SetConsoleCursorInfo(
+			GetStdHandle(STD_OUTPUT_HANDLE),
+			&info
+		);
 	}
 
 	Engine::~Engine()
@@ -97,6 +110,19 @@ namespace Wanted
 
 		// Todo: 정리 작업.
 		std::cout << "Engine has been shutdown....\n";
+
+		// 커서 켜기
+		CONSOLE_CURSOR_INFO info = {};
+		GetConsoleCursorInfo(
+			GetStdHandle(STD_OUTPUT_HANDLE),
+			&info
+		);
+
+		info.bVisible = false;
+		SetConsoleCursorInfo(
+			GetStdHandle(STD_OUTPUT_HANDLE),
+			&info
+		);
 	}
 
 	void Engine::QuitEngine()
