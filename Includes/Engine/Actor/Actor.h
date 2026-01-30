@@ -2,9 +2,13 @@
 
 #include "Common/RTTI.h"
 #include "Math/Vector2.h"
+#include "Math/Color.h"
 
 namespace Wanted
 {
+	// 전방 선언
+	class Level;
+
 	class WANTED_API Actor : public RTTI
 	{
 		// RTTI 코드 추가
@@ -13,7 +17,8 @@ namespace Wanted
 	public:
 		Actor(
 			const char image = ' ',
-			const Vector2& position = Vector2::Zero
+			const Vector2& position = Vector2::Zero,
+			Color color = Color::White
 		);
 		virtual ~Actor();
 
@@ -25,6 +30,10 @@ namespace Wanted
 		// 위치 변경 및 읽기 함수
 		void SetPosition(const Vector2& newPosition);
 		inline Vector2 GetPosition() const { return position; }
+		
+		// 오너십 추가/읽기 함수
+		inline void SetOwner(Level* newOwner) { owner = newOwner; }
+		inline Level* GetOwner() const { return owner; }
 
 		// Getter.
 		inline bool HasBeganPlay() const { return hasBeganPlay; }
@@ -49,6 +58,12 @@ namespace Wanted
 		
 		// 그릴 문자 (이미지)
 		char image = ' ';
+
+		// 색상
+		Color color = Color::White;
+
+		// 오너십(Ownership)
+		Level* owner = nullptr;
 
 	private:
 		// 위치

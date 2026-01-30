@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "Level/Level.h"
 #include "Core/Input.h"
+#include "Util/Util.h"
 
 #include <iostream>
 #include <Windows.h>
@@ -21,18 +22,7 @@ namespace Wanted
 		// 설정 파일 로드
 		LoadSetting();
 
-		// 커서 끄기
-		CONSOLE_CURSOR_INFO info = {};
-		GetConsoleCursorInfo(
-			GetStdHandle(STD_OUTPUT_HANDLE),
-			&info
-		);
-
-		info.bVisible = false;
-		SetConsoleCursorInfo(
-			GetStdHandle(STD_OUTPUT_HANDLE),
-			&info
-		);
+		
 	}
 
 	Engine::~Engine()
@@ -105,24 +95,18 @@ namespace Wanted
 				previousTime = currentTime;
 
 				input->SavePreviousInputStates();
+
+				// 레벨에 요청된 추가/제거 처리
+				if (mainLevel)
+				{
+					mainLevel->ProcessAddAndDestroyActors();
+				}
 			}
 		}
 
-		// Todo: 정리 작업.
-		std::cout << "Engine has been shutdown....\n";
+		// 정리
+		Shutdown();
 
-		// 커서 켜기
-		CONSOLE_CURSOR_INFO info = {};
-		GetConsoleCursorInfo(
-			GetStdHandle(STD_OUTPUT_HANDLE),
-			&info
-		);
-
-		info.bVisible = false;
-		SetConsoleCursorInfo(
-			GetStdHandle(STD_OUTPUT_HANDLE),
-			&info
-		);
 	}
 
 	void Engine::QuitEngine()
@@ -156,6 +140,15 @@ namespace Wanted
 		}
 
 		return *instance;
+	}
+
+	void Engine::Shutdown()
+	{
+		// Todo: 정리 작업.
+		std::cout << "Engine has been shutdown....\n";
+
+		// 커서 켜기
+		Util::TurnOnCursor();
 	}
 
 	//프로젝트 기준 상대경로 -> 하나 올라가서 config 파일열고 setting.txt파일 열기
