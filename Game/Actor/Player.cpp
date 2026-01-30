@@ -12,7 +12,8 @@ using namespace Wanted;
 Player::Player()
 	: super('P', Vector2(2,3), Color::Red)
 {
-
+	// 그리기 우선순위 높게 설정
+	sortingOrder = 20;
 }
 
 void Player::BeginPlay()
@@ -20,8 +21,6 @@ void Player::BeginPlay()
 	// 상위 함수 호출.
 	// C++는 부모함수 가리키는 포인터가 없음.
 	Actor::BeginPlay();
-
-	std::cout << "TestActor::BeginPlay().\n";
 }
 
 void Player::Tick(float deltaTime)

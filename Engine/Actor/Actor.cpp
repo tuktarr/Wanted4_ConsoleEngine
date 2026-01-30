@@ -40,6 +40,6 @@ namespace Wanted
 		Renderer::Draw(position, ' ');
 
 		// 새로운 위치 설정
-		position - newPosition;
+		position = newPosition;
 	}
 }
