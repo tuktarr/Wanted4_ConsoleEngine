@@ -1,13 +1,13 @@
 #include <iostream>
 #include "Engine/Engine.h"
-#include "Level/TestLevel.h"
+#include "Level/SokobanLevel.h"
 
 using namespace Wanted;
 
 int main()
 {
 	Wanted::Engine engine;
-	engine.SetNewLevel(new TestLevel());
+	engine.SetNewLevel(new SokobanLevel());
 	engine.Run();
 
 	// 그래픽스에서 입력이 들어와 처리가 되면 최종 이미지를 만들 때, 화면에 나가는 이미지는
